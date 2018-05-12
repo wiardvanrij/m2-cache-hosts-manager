@@ -4,6 +4,7 @@
         <arguments>
             <argument name="commands" xsi:type="array">
                 <item name="add" xsi:type="object">Webfixit\CacheHostsManager\Console\Command\add</item>
+                <item name="remove" xsi:type="object">Webfixit\CacheHostsManager\Console\Command\remove</item>
             </argument>
         </arguments>
     </type>

@@ -10,10 +10,10 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Webfixit\CacheHostsManager\Service\ConfigService;
 
-class Add extends Command
+class Remove extends Command
 {
 
-    /** @var ConfigService */
+    /** @var ConfigService  */
     private $configService;
 
     /**
@@ -33,7 +33,7 @@ class Add extends Command
      */
     protected function configure()
     {
-        $this->setName('cachehosts:add')->setDescription('Adds a cache host');
+        $this->setName('cachehosts:remove')->setDescription('Removes a cache host');
         $this->addArgument("http-cache-host");
         parent::configure();
     }
@@ -51,14 +51,13 @@ class Add extends Command
             // Current configuration
             $currentData = $this->configService->getCurrentCacheHosts();
             // Input configuration
-
             $fileConfigStorage = $this->configService->generateConfig($inputData);
 
-            // Merge configs
-            $mergedFileConfigStorage = $this->configService->mergeConfigData($fileConfigStorage, $currentData);
+            // Merge configs while removing current input
+            $mergedFileConfigStorage = $this->configService->mergeRemoveConfigData($fileConfigStorage, $currentData);
 
             // And write config to file
-            $this->configService->writeConfig($mergedFileConfigStorage);
+            $this->configService->writeConfig($mergedFileConfigStorage, true);
 
             $output->writeln('Wrote to config file');
         }
