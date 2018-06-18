@@ -3,8 +3,8 @@
     <type name="Magento\Framework\Console\CommandList">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="add" xsi:type="object">Webfixit\CacheHostsManager\Console\Command\add</item>
-                <item name="remove" xsi:type="object">Webfixit\CacheHostsManager\Console\Command\remove</item>
+                <item name="add" xsi:type="object">Webfixit\CacheHostsManager\Console\Command\Add</item>
+                <item name="remove" xsi:type="object">Webfixit\CacheHostsManager\Console\Command\Remove</item>
             </argument>
         </arguments>
     </type>
